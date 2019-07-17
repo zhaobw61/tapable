@@ -14,3 +14,7 @@
 - SyncLoopHook:循环执行钩子
 
 > 同步遇到某个不返回undefined的函数会多次执行，直到返回undefined
+
+ - AsyncParallelHook 异步的钩子 并发 需要等待所有并发的异步事件执行后在执行回调方法。
+ 
+ - AsyncPromiselHook 异步并发的钩子
