@@ -17,7 +17,7 @@ hook.tapPromise('react',function(name,cb){
         setTimeout(()=>{
             console.log('node',data);
             resolve();
-        },1000)   
+        },1000)
    })
 });
 hook.tapPromise('node',function(data,cb){
