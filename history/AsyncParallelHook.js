@@ -1,4 +1,4 @@
-class SyncLoopHook { // 钩子是同步的
+class AsyncParallelHook { // 钩子是同步的
     constructor(args){
         this.tasks = [];
     }
@@ -20,7 +20,7 @@ class SyncLoopHook { // 钩子是同步的
     }
 }
 
-let hook = new SyncLoopHook(['name']);
+let hook = new AsyncParallelHook(['name']);
 let total = 0;
 hook.tapAsync('react',function(name,cb){
     setTimeout(()=>{
