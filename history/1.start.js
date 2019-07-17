@@ -1,15 +1,14 @@
-let {SyncBailHook} = require('tapable');
+let {SyncHook} = require('tapable');
 
 class Lesson {
     constructor(){
         this.hooks = {
-            arch: new SyncBailHook(['name']),
+            arch: new SyncHook(['name']),
         }
     }
     tap(){ // 注册监听函数
         this.hooks.arch.tap('node',function(name){
             console.log('node',name);
-            return "asd"
         });
         this.hooks.arch.tap('react',function(name){
             console.log('react',name);
