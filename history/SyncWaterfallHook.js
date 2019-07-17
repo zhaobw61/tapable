@@ -1,30 +1,31 @@
-class SyncLoopHook { // 钩子是同步的
+class SyncWaterfallHook { // 钩子是同步的
     constructor(args){
         this.tasks = [];
     }
     tap(name,task){
         this.tasks.push(task);
     }
-    call(...args){ 
-        this.tasks.forEach(task=>{
-            let ret;
-            do{
-                ret = task(...args);
-            }while(ret != undefined)
-        })
+    call(...args){
+        let [frist,...others] = this.tasks;
+        let ret = frist(...args);
+        others.reduce((a,b)=>{
+            return b(a)
+        },ret)
     }
 }
 
-let hook = new SyncLoopHook(['name']);
-let total = 0;
+let hook = new SyncWaterfallHook(['name']);
+
 hook.tap('react',function(name){
     console.log('react',name);
-    return ++total == 3?undefined : '继续学';
+    return 'react ok';
 });
 hook.tap('node',function(data){
     console.log('node',data);
+    return 'node ok';
 });
 hook.tap('webpack',function(data){
     console.log('webpack',data);
+    return 'webpack ok';
 });
 hook.call('jw');

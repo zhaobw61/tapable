@@ -1,9 +1,9 @@
-let {SyncBailHook} = require('tapable');
+let {SyncWaterfallHook} = require('tapable');
 
 class Lesson {
     constructor(){
         this.hooks = {
-            arch: new SyncBailHook(['name']),
+            arch: new SyncWaterfallHook(['name']),
         }
     }
     tap(){ // 注册监听函数
