@@ -2,7 +2,7 @@ class ASyncSeries { // 钩子是同步的
     constructor(args){
         this.tasks = [];
     }
-    tapPromise(name,task){
+    tapAsync(name,task){
         this.tasks.push(task);
     }
     callAsync(...args){
